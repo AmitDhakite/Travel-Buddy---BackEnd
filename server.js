@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import Cors from "cors";
 import routes from "./routes/routes.js";
 import dotenv from "dotenv";
+import auth from "./routes/auth.js";
+import passport from "passport";
+import "./passport.js";
 
 dotenv.config();
 const app = express();
@@ -18,6 +21,7 @@ mongoose.connect(process.env.MONGO_URL, {
   useFindAndModify: false,
 });
 
+app.use("/auth", auth);
 app.use("/", routes);
 
 app.get("/", (req, res) => {
