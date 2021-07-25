@@ -40,14 +40,16 @@ passport.use(
         //this one is typically a DB call. Assume that the returned user object is pre-formatted and ready for storing in JWT
         User.findOne({ email }, (error, data) => {
           if (data === undefined || data === null) {
-            return cb(null, false, { message: "Incorrect email or password." });
+            return cb(null, false, {
+              message: "Incorrect email or password 1.",
+            });
           }
           bcrypt.compare(password, data.password, function (err, result) {
             if (result) {
               return cb(null, data, { message: "Logged In Successfully" });
             } else {
               return cb(null, false, {
-                message: "Incorrect email or password.",
+                message: "Incorrect email or password 2.",
               });
             }
           });
