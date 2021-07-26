@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
-const saltRounds = 12;
+const saltRounds = 10;
 
 export const register = (req, res) => {
   try {
@@ -20,6 +20,16 @@ export const register = (req, res) => {
           });
         });
       }
+    });
+  } catch (e) {
+    res.status(500).json(e);
+  }
+};
+
+export const getUsers = (req, res) => {
+  try {
+    User.find({}, (err, foundUsers) => {
+      res.status(200).json(foundUsers);
     });
   } catch (e) {
     res.status(500).json(e);

@@ -25,7 +25,7 @@ app.use("/auth", auth);
 app.use("/", routes);
 
 app.get("/", (req, res) => {
-  res.send("App deployed");
+  res.send("App deployed1");
 });
 
 app.listen(port, function () {

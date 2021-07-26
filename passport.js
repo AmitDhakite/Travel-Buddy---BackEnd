@@ -36,7 +36,7 @@ passport.use(
     },
     function (req, email, password, cb) {
       try {
-        console.log("in passport");
+        // console.log("in passport");
         //this one is typically a DB call. Assume that the returned user object is pre-formatted and ready for storing in JWT
         User.findOne({ email }, (error, data) => {
           if (data === undefined || data === null) {
