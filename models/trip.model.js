@@ -10,6 +10,7 @@ const tripSchema = new Schema({
   endDate: { type: Date },
   twoWay: { type: Boolean },
   transport: { type: String },
+  noOfPeople: { type: Number },
 });
 
 const Trip = mongoose.model("Trip", tripSchema);
