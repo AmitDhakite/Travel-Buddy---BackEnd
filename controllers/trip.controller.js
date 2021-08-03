@@ -28,6 +28,20 @@ export const getAllTripsById = (req, res) => {
   }
 };
 
+export const getAllTrips = (req, res) => {
+  try {
+    Trip.find({}, (err, data) => {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(data);
+      }
+    });
+  } catch (e) {
+    res.status(400).json(e);
+  }
+};
+
 export const deleteTrip = (req, res) => {
   try {
     // console.log(req.body.id);

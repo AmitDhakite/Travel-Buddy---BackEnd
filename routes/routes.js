@@ -12,6 +12,7 @@ import {
   addTrip,
   getAllTripsById,
   deleteTrip,
+  getAllTrips,
 } from "../controllers/trip.controller.js";
 
 //USER
@@ -23,6 +24,7 @@ router.post("/editUser", editUser);
 //TRIP
 router.post("/addTrip", addTrip);
 router.post("/getAllTripsById", getAllTripsById);
+router.post("/getAllTrips", getAllTrips);
 router.post("/deleteTrip", deleteTrip);
 
 export default router;
