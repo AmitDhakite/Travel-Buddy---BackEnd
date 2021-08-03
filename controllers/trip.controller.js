@@ -27,3 +27,18 @@ export const getAllTripsById = (req, res) => {
     res.status(400).json(e);
   }
 };
+
+export const deleteTrip = (req, res) => {
+  try {
+    // console.log(req.body.id);
+    Trip.deleteOne({ _id: req.body.id }, (err) => {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json("Trip Deleted");
+      }
+    });
+  } catch (e) {
+    res.status(400).json(e);
+  }
+};
