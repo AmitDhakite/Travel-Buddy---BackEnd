@@ -1,4 +1,5 @@
 import Trip from "../models/trip.model.js";
+import User from "../models/user.model.js";
 
 export const addTrip = (req, res) => {
   try {
@@ -34,7 +35,27 @@ export const getAllTrips = (req, res) => {
       if (err) {
         res.status(400).json(err);
       } else {
-        res.status(200).json(data);
+        User.find({}, (er, foundUsers) => {
+          if (er) {
+            res.status(400).json(er);
+          } else {
+            // console.log(data);
+            // console.log(foundUsers);
+            const result = [];
+            data.forEach((d) => {
+              foundUsers.forEach((u) => {
+                if (d.userId == u._id) {
+                  result.push({
+                    user: u,
+                    trip: d,
+                  });
+                  return;
+                }
+              });
+            });
+            res.status(200).json(result);
+          }
+        });
       }
     });
   } catch (e) {
