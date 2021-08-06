@@ -39,15 +39,20 @@ export const getAllTrips = (req, res) => {
           if (er) {
             res.status(400).json(er);
           } else {
-            // console.log(data);
-            // console.log(foundUsers);
             const result = [];
             data.forEach((d) => {
               foundUsers.forEach((u) => {
                 if (d.userId == u._id) {
                   result.push({
-                    user: u,
-                    trip: d,
+                    userId: d.userId,
+                    from: d.from,
+                    to: d.to,
+                    startDate: d.startDate,
+                    endDate: d.endDate,
+                    twoWay: d.twoWay,
+                    transport: d.transport,
+                    noOfPeople: d.noOfPeople,
+                    name: u.firstName + " " + u.lastName,
                   });
                   return;
                 }
