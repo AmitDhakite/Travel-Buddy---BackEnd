@@ -14,7 +14,6 @@ export const addNewConversation = async (req, res) => {
 
 export const getConversations = async (req, res) => {
   try {
-    console.log("skfjkds");
     const conversations = await Conversation.find({
       members: { $in: [req.params.userId] },
     });

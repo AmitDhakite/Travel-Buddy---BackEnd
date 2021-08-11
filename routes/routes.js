@@ -25,7 +25,7 @@ import { addNewMessage, getChats } from "../controllers/message.controller.js";
 //USER
 router.post("/register", register);
 router.get("/register", getUsers);
-router.post("/getUser", getUserById);
+router.get("/getUser/:userId", getUserById);
 router.post("/editUser", editUser);
 
 //TRIP
@@ -37,7 +37,7 @@ router.post("/deleteTrip", deleteTrip);
 //CONVERSATION
 router.post("/addNewConversation", addNewConversation);
 router.post("/addNewMessage", addNewMessage);
-router.get("/getChats/:userId", getChats);
+router.get("/getChats/:conversationId", getChats);
 router.get("/getConversations/:userId", getConversations);
 
 export default router;

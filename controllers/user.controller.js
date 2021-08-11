@@ -38,7 +38,7 @@ export const getUsers = (req, res) => {
 
 export const getUserById = (req, res) => {
   try {
-    User.findOne({ _id: req.body.userId }, (err, foundUser) => {
+    User.findOne({ _id: req.params.userId }, (err, foundUser) => {
       if (!err) {
         res.status(200).json(foundUser);
       } else {
