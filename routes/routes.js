@@ -20,6 +20,11 @@ import {
   getConversations,
 } from "../controllers/conversation.controller.js";
 
+import {
+  addNewConnection,
+  getConnections,
+} from "../controllers/connection.controller.js";
+
 import { addNewMessage, getChats } from "../controllers/message.controller.js";
 
 //USER
@@ -39,5 +44,9 @@ router.post("/addNewConversation", addNewConversation);
 router.post("/addNewMessage", addNewMessage);
 router.get("/getChats/:conversationId", getChats);
 router.get("/getConversations/:userId", getConversations);
+
+//CONNECTIONS for BUDDIES
+router.post("/addNewConnection", addNewConnection);
+router.get("/getConnections/:userId", getConnections);
 
 export default router;

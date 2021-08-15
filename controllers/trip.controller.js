@@ -53,6 +53,7 @@ export const getAllTrips = (req, res) => {
                     transport: d.transport,
                     noOfPeople: d.noOfPeople,
                     name: u.firstName + " " + u.lastName,
+                    _id: d._id,
                   });
                   return;
                 }
