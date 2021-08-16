@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
-
+import passport from "passport";
+import "../passport.js";
 import {
   register,
   getUsers,
@@ -30,23 +31,67 @@ import { addNewMessage, getChats } from "../controllers/message.controller.js";
 //USER
 router.post("/register", register);
 router.get("/register", getUsers);
-router.get("/getUser/:userId", getUserById);
-router.post("/editUser", editUser);
+router.get(
+  "/getUser/:userId",
+  passport.authenticate("jwt", { session: false }),
+  getUserById
+);
+router.post(
+  "/editUser",
+  passport.authenticate("jwt", { session: false }),
+  editUser
+);
 
 //TRIP
-router.post("/addTrip", addTrip);
+router.post(
+  "/addTrip",
+  passport.authenticate("jwt", { session: false }),
+  addTrip
+);
 router.post("/getAllTripsById", getAllTripsById);
-router.post("/getAllTrips", getAllTrips);
-router.post("/deleteTrip", deleteTrip);
+router.post(
+  "/getAllTrips",
+
+  getAllTrips
+);
+router.post(
+  "/deleteTrip",
+  passport.authenticate("jwt", { session: false }),
+  deleteTrip
+);
 
 //CONVERSATION
-router.post("/addNewConversation", addNewConversation);
-router.post("/addNewMessage", addNewMessage);
-router.get("/getChats/:conversationId", getChats);
-router.get("/getConversations/:userId", getConversations);
+router.post(
+  "/addNewConversation",
+  passport.authenticate("jwt", { session: false }),
+  addNewConversation
+);
+router.post(
+  "/addNewMessage",
+  passport.authenticate("jwt", { session: false }),
+  addNewMessage
+);
+router.get(
+  "/getChats/:conversationId",
+  passport.authenticate("jwt", { session: false }),
+  getChats
+);
+router.get(
+  "/getConversations/:userId",
+  passport.authenticate("jwt", { session: false }),
+  getConversations
+);
 
 //CONNECTIONS for BUDDIES
-router.post("/addNewConnection", addNewConnection);
-router.get("/getConnections/:userId", getConnections);
+router.post(
+  "/addNewConnection",
+  passport.authenticate("jwt", { session: false }),
+  addNewConnection
+);
+router.get(
+  "/getConnections/:userId",
+  passport.authenticate("jwt", { session: false }),
+  getConnections
+);
 
 export default router;
